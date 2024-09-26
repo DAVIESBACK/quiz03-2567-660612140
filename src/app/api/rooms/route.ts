@@ -29,7 +29,7 @@ export const POST = async (request: NextRequest) => {
 
   readDB();
   const body = await request.json();
-  const { roomName: newRoomName } = body;
+  const { roomName } = body;
   const foundRoom = originalDB.rooms.find((x)=>x.roomName === roomName);
     if(foundRoom){
     return NextResponse.json({
@@ -39,7 +39,6 @@ export const POST = async (request: NextRequest) => {
     }
 
   const roomId = nanoid();
-  const roomName = nanoid();
   originalDB.rooms.push({
     roomId,
     roomName
